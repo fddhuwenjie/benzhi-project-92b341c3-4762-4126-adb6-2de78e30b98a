@@ -1,0 +1,35 @@
+.notice{display:grid;grid-template-columns:auto auto 1fr;gap:14px;align-items:center;margin-top:14px;padding:12px 14px;background:#fff7dd;border-left:4px solid var(--amber)}
+.notice code{font-size:11px;overflow-wrap:anywhere}
+.risk-strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin-top:14px}
+.risk-strip button{display:grid;gap:4px;text-align:left;background:#fff;color:var(--ink);border-color:var(--line)}
+.risk-strip span{font-size:11px;color:var(--muted)}
+.filters{display:grid;grid-template-columns:repeat(4,minmax(120px,1fr)) auto auto;gap:8px;align-items:center;margin-top:12px}
+.filters span{white-space:nowrap;color:var(--muted)}
+.pill.warning{background:#fff0cb;color:var(--amber)}
+.pill.critical{background:#f6e5e3;color:var(--red)}
+.progress{height:6px;background:#e2e7e4;margin:10px 0}
+.progress span{display:block;height:100%;background:var(--green)}
+.versions{padding-left:20px}
+.versions li{display:grid;gap:3px;padding:8px 0;border-top:1px solid var(--line)}
+.versions span,.versions small{color:var(--muted)}
+.versions code{font-size:10px;overflow-wrap:anywhere}
+.history-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}
+.history-grid article{background:#fff;border:1px solid var(--line);padding:13px}
+.history-grid h4,.history-grid p{margin:3px 0}
+.history-grid p{color:var(--muted);font-size:12px}
+.checklist{display:grid;gap:8px;margin-bottom:12px}
+.review-item{display:grid;grid-template-columns:minmax(180px,1fr) 90px;gap:6px;padding:9px;border:1px solid var(--line)}
+.review-item input,.review-item .return-taps{grid-column:1/-1}
+.review-item .return-taps{min-height:58px}
+.button-link{display:inline-block;border:1px solid var(--green);border-radius:4px;padding:9px 13px;background:var(--green);color:#fff;font-weight:600;text-decoration:none}
+.check-results{grid-column:1/-1;display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.check-results span{padding:8px;border-left:3px solid var(--green);background:var(--green-soft)}
+.check-results .fail{border-color:var(--red);background:#f6e5e3}
+@media(max-width:800px){.filters,.check-results{grid-template-columns:1fr}.notice{grid-template-columns:1fr}.toolbar{flex-wrap:wrap}}
+.governance-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}.governance-grid article,.ledger{background:#fff;border:1px solid var(--line);padding:14px}.governance-grid h4{margin:0 0 8px}.governance-grid small{display:block;margin-top:6px;color:var(--muted);overflow-wrap:anywhere}.governance-grid small.error{color:var(--red)}.governance-grid small.warning{color:var(--amber)}.ledger{margin-top:16px}.ledger textarea{margin:12px 0 8px}.defect-select{width:auto;margin-right:5px}.pill.invalidated,.pill.critical,.pill.source_voided{background:#f6e5e3;color:var(--red)}
+@media(max-width:800px){.governance-grid{grid-template-columns:1fr}.toolbar{flex-wrap:wrap;justify-content:flex-start}}
+.compact-history{display:grid;gap:3px;margin-top:8px}.compact-history small{color:var(--muted)}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.checklist>span{display:block;padding:7px;border-left:3px solid var(--green);background:var(--green-soft)}.checklist>span.fail{border-color:var(--red);background:#f6e5e3}.timeline code{display:block;font-size:10px;overflow-wrap:anywhere;color:var(--muted)}
+@media(max-width:800px){.field-grid{grid-template-columns:1fr}}
+.compact{padding:4px 7px;margin-top:5px;font-size:11px}
+.quality-snapshot,.requirement-list{display:grid;gap:8px;margin:10px 0 16px}.quality-snapshot article,.requirement-list article{background:#fff;border:1px solid var(--line);padding:12px}.quality-snapshot h4,.quality-snapshot p,.requirement-list h4,.requirement-list p{margin:3px 0}.quality-snapshot p,.requirement-list p{font-size:12px;color:var(--muted)}.quality-snapshot code{font-size:10px;overflow-wrap:anywhere}.quality-filters{grid-template-columns:repeat(4,minmax(120px,1fr)) auto}.requirement-list .completed{border-left:4px solid var(--green)}.requirement-list .open{border-left:4px solid var(--red)}
+@media(max-width:800px){.quality-filters{grid-template-columns:1fr}}
