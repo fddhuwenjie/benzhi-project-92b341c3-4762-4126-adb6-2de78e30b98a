@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>压力测孔资格工作台</title>
+  <link rel="stylesheet" href="/assets/app.css">
+  <link rel="stylesheet" href="/assets/extensions.css">
+</head>
+<body>
+  <header class="topbar">
+    <div><p class="eyebrow">WIND TUNNEL QA</p><h1>压力测孔资格工作台</h1></div>
+    <div class="identity"><label>当前人员<input id="actor" value="engineer-a" autocomplete="off"></label><span id="connection" class="status">就绪</span></div>
+  </header>
+  <main>
+    <aside class="sidebar">
+      <div class="side-title"><h2>验收批次</h2><button id="new-batch" title="建立批次" aria-label="建立批次">＋</button></div>
+      <div id="batch-list" class="batch-list"></div>
+    </aside>
+    <section class="workspace">
+      <div id="empty" class="empty"><h2>选择或建立验收批次</h2><p>批次的冻结基线、测量、缺陷返修、独立复核和证书在此处统一留痕。</p></div>
+      <div id="detail" hidden>
+        <section class="batch-head">
+          <div><p id="model-code" class="eyebrow"></p><h2 id="batch-title"></h2><p id="objective" class="muted"></p><button id="edit-info" class="secondary">修订批次信息</button><div id="info-history" class="compact-history"></div></div>
+          <div class="state-box"><span id="state" class="state"></span><strong id="revision"></strong></div>
+        </section>
+        <nav class="tabs" aria-label="业务区域">
+          <button class="active" data-tab="overview">测孔矩阵</button><button data-tab="defects">缺陷与复测</button><button data-tab="review">复核放行</button><button data-tab="audit">审计与验证</button>
+        </nav>
+        <section id="overview" class="tab-panel active">
+          <div class="metrics"><div><span>覆盖率</span><strong id="coverage">0%</strong></div><div><span>开放缺陷</span><strong id="open-defects">0</strong></div><div><span>校准状态</span><strong id="calibration-state">未登记</strong></div></div>
+          <div id="draft-diff" class="notice" hidden></div>
+		  <div id="draft-governance" class="governance-grid"></div>
+          <div id="zone-risk" class="risk-strip"></div>
+          <div class="section-head"><div><h3>测量质量统计</h3></div></div><div class="filters quality-filters"><input id="quality-tap" placeholder="测孔编号"><select id="quality-zone"><option value="">全部区域</option></select><select id="quality-kind"><option value="">全部轮次</option><option value="initial">初测</option><option value="retest">复测</option></select><select id="quality-level"><option value="">全部风险</option><option value="high">高风险</option><option value="warning">提示</option><option value="normal">正常</option></select><button id="refresh-quality" class="secondary">刷新统计</button></div><div id="quality-snapshot" class="quality-snapshot"></div>
+          <div class="filters"><select id="filter-zone"><option value="">全部区域</option></select><select id="filter-status"><option value="">全部资格状态</option><option value="pending">待测量</option><option value="qualified">合格</option><option value="defective">有缺陷</option></select><select id="filter-defect"><option value="">全部缺陷类型</option><option value="missing">缺测</option><option value="blocked">堵塞</option><option value="leak">泄漏</option><option value="lag">响应迟滞</option><option value="crosstalk">串扰</option></select><select id="filter-blocking"><option value="">全部送审状态</option><option value="true">阻塞送审</option><option value="false">不阻塞送审</option></select><button id="apply-filter" class="secondary">筛选</button><span id="filter-count"></span></div>
+          <div class="toolbar"><button id="edit-thresholds" class="secondary">修订阈值</button><button id="edit-baseline" class="secondary">编辑清单</button><button id="freeze">预检并冻结</button><button id="calibrate" class="secondary">登记校准</button><button id="measure">录入测量</button><button id="batch-measure">批量录入</button></div>
+          <div class="table-wrap"><table><thead><tr><th>测孔</th><th>区域</th><th>孔径 mm</th><th>相邻通道</th><th>状态</th><th>最新轮次</th></tr></thead><tbody id="tap-rows"></tbody></table></div>
+          <div class="section-head"><div><h3>轮次对比与漂移提示</h3></div></div><div id="drift-list" class="timeline"></div>
+          <div class="section-head"><div><h3>校准履历与影响</h3></div></div><div id="calibration-history" class="history-grid"></div>
+        </section>
+        <section id="defects" class="tab-panel">
+          <div class="section-head"><div><h3>复核退回要求</h3></div></div><div id="review-requirements" class="requirement-list"></div>
+          <div class="section-head"><div><h3>缺陷队列</h3><p>返修证据和复测轮次始终关联原始判定。</p></div><div class="actions"><button id="batch-treat">批量处置</button><button id="batch-retest" class="secondary">批量复测</button></div></div><div class="filters"><input id="task-owner" placeholder="责任技师"><select id="task-status"><option value="">全部任务状态</option><option value="unassigned">未分派</option><option value="in_progress">进行中</option><option value="due_soon">临期</option><option value="overdue">逾期</option><option value="completed">已完成</option></select><button id="filter-tasks">筛选任务</button></div><div id="defect-list" class="defect-list"></div>
+          <div class="section-head"><div><h3>测量轮次</h3></div></div><div id="round-list" class="timeline"></div>
+        </section>
+        <section id="review" class="tab-panel">
+          <div class="review-grid"><div><h3>送审快照</h3><p id="snapshot-status">尚未形成送审快照</p><div id="submission-preflight" class="checklist"></div><button id="submit">预检并形成送审快照</button></div><div><h3>独立复核</h3><p id="reviewer-status">等待独立性预检</p><div id="difference-package" class="checklist"></div><div id="review-checklist" class="checklist"></div><textarea id="review-note" placeholder="本轮复核总意见"></textarea><div class="actions"><button id="approve">批准放行</button><button id="return" class="danger">定向退回</button></div></div></div>
+          <div id="review-history" class="timeline"></div>
+          <div id="certificate" class="certificate" hidden><p class="eyebrow">QUALIFICATION CERTIFICATE</p><h3 id="cert-id"></h3><dl><dt>复核员</dt><dd id="cert-reviewer"></dd><dt>签发时间</dt><dd id="cert-time"></dd><dt>SHA-256</dt><dd id="cert-digest" class="digest"></dd></dl><a id="download-certificate" class="button-link" download>下载规范 JSON</a></div>
+        </section>
+        <section id="audit" class="tab-panel"><div class="verify"><h3>证书分项一致性核验</h3><input id="verify-digest" placeholder="可选：输入证书 SHA-256 摘要"><button id="verify">校验封存记录</button><p id="verify-result"></p><div id="verify-checks" class="check-results"></div></div><div class="ledger"><div class="section-head"><div><h3>批次修订历史</h3></div><button id="query-history" class="secondary">查询差异</button></div><div class="filters"><select id="history-type"><option value="baseline">测孔清单</option><option value="threshold">阈值</option><option value="batch_info">批次信息</option></select><input id="history-from" type="number" min="1" placeholder="起始版本"><input id="history-to" type="number" min="1" placeholder="目标版本"></div><div id="revision-history" class="timeline"></div></div><div class="ledger"><div class="section-head"><div><h3>资格证书台账</h3></div><button id="refresh-ledger" class="secondary">刷新台账</button></div><div class="filters"><input id="ledger-model" placeholder="模型编号"><input id="ledger-reviewer" placeholder="复核员"><input id="ledger-prefix" placeholder="摘要前缀"><button id="filter-ledger">查询</button></div><div id="certificate-ledger" class="table-wrap"></div><textarea id="batch-verify-input" placeholder="每行：batch_id,可选摘要"></textarea><button id="batch-verify">批量核验</button><div id="batch-verify-result" class="check-results"></div></div><div class="ledger"><div class="section-head"><h3>审计链段</h3><a id="audit-download" class="button-link">下载规范 JSON</a></div><div class="filters"><input id="audit-action" placeholder="动作类型"><input id="audit-actor" placeholder="操作人"><input id="audit-related" placeholder="业务标识"><input id="audit-from" type="datetime-local" aria-label="起始时间"><input id="audit-to" type="datetime-local" aria-label="结束时间"><button id="filter-audit">查询</button></div><p id="audit-validation"></p><div class="actions"><button id="audit-prev" class="secondary">上一页</button><span id="audit-page">第 1 页</span><button id="audit-next" class="secondary">下一页</button></div><div id="audit-list" class="timeline"></div></div></section>
+      </div>
+    </section>
+  </main>
+  <dialog id="modal"><form id="modal-form" method="dialog"><header><h2 id="modal-title"></h2><button type="button" id="modal-close" aria-label="关闭">×</button></header><div id="modal-fields"></div><footer><button type="button" id="modal-cancel" class="secondary">取消</button><button id="modal-submit" value="default">提交</button></footer></form></dialog>
+  <div id="toast" role="status"></div>
+  <script src="/assets/app.js"></script>
+</body>
+</html>
