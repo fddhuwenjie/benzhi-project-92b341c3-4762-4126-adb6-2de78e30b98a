@@ -1,0 +1,168 @@
+{
+  "batch_id": "SMOKE-V40",
+  "model_code": "WT-SMOKE-02",
+  "test_objective": "验证扩展入口及持久化",
+  "state": "draft",
+  "threshold_profile": {
+    "minimum_pressure_ratio": 0.9,
+    "maximum_pressure_ratio": 1.05,
+    "maximum_decay_seconds": 3,
+    "maximum_neighbor_ratio": 0.05,
+    "required_consecutive_passes": 2
+  },
+  "threshold_history": [
+    {
+      "version": 1,
+      "profile": {
+        "minimum_pressure_ratio": 0.9,
+        "maximum_pressure_ratio": 1.05,
+        "maximum_decay_seconds": 3,
+        "maximum_neighbor_ratio": 0.05,
+        "required_consecutive_passes": 2
+      },
+      "reason": "建立批次初始阈值方案",
+      "actor_id": "qa-owner",
+      "at": "2026-08-27T09:12:28.387917941Z",
+      "changes": [
+        {
+          "field": "minimum_pressure_ratio",
+          "before": "0.900000000",
+          "after": "0.900000000",
+          "direction": "unchanged"
+        },
+        {
+          "field": "maximum_pressure_ratio",
+          "before": "1.050000000",
+          "after": "1.050000000",
+          "direction": "unchanged"
+        },
+        {
+          "field": "maximum_decay_seconds",
+          "before": "3.000000000",
+          "after": "3.000000000",
+          "direction": "unchanged"
+        },
+        {
+          "field": "maximum_neighbor_ratio",
+          "before": "0.050000000",
+          "after": "0.050000000",
+          "direction": "unchanged"
+        },
+        {
+          "field": "required_consecutive_passes",
+          "before": "2",
+          "after": "2",
+          "direction": "unchanged"
+        }
+      ],
+      "digest": "53e8ff146de9d805eed32365e5c83624d6f40494e12e66f95cc17fcc39620ac0"
+    }
+  ],
+  "batch_info_history": [
+    {
+      "version": 1,
+      "reason": "补充冒烟范围",
+      "actor_id": "qa-owner",
+      "at": "2026-08-27T09:13:26.749752946Z",
+      "changes": [
+        {
+          "field": "model_code",
+          "before": "WT-SMOKE",
+          "after": "WT-SMOKE-02"
+        },
+        {
+          "field": "test_objective",
+          "before": "验证扩展入口",
+          "after": "验证扩展入口及持久化"
+        }
+      ],
+      "digest": "e5d6e765d5f16c1b7384c71d085d530fc0c4753ac5cd6a4f95b3530cd0c45084"
+    }
+  ],
+  "topology_acknowledgements": null,
+  "baseline_revision": 0,
+  "draft_revision": 1,
+  "draft_baseline_diff": {
+    "added": [
+      {
+        "tap_id": "T01",
+        "after": {
+          "tap_id": "T01",
+          "label": "冒烟测孔",
+          "surface_zone": "Z1",
+          "nominal_diameter_mm": 1.2,
+          "neighbor_tap_ids": null
+        }
+      }
+    ],
+    "modified": [],
+    "deleted": [],
+    "summary": "71f11a700131aadbd53205d473f972f2fcfa511976d3d50fcbb2990dd00f39b2"
+  },
+  "draft_history": [
+    {
+      "revision": 1,
+      "reason": "建立批次初始测孔清单",
+      "actor_id": "qa-owner",
+      "at": "2026-08-27T09:12:28.387917941Z",
+      "diff": {
+        "added": [
+          {
+            "tap_id": "T01",
+            "after": {
+              "tap_id": "T01",
+              "label": "冒烟测孔",
+              "surface_zone": "Z1",
+              "nominal_diameter_mm": 1.2,
+              "neighbor_tap_ids": null
+            }
+          }
+        ],
+        "modified": [],
+        "deleted": [],
+        "summary": "71f11a700131aadbd53205d473f972f2fcfa511976d3d50fcbb2990dd00f39b2"
+      }
+    }
+  ],
+  "revision": 2,
+  "created_by": "qa-owner",
+  "created_at": "2026-08-27T09:12:28.387917941Z",
+  "calibration_history": null,
+  "calibration_invalidations": null,
+  "taps": {
+    "T01": {
+      "tap_id": "T01",
+      "batch_id": "SMOKE-V40",
+      "label": "冒烟测孔",
+      "surface_zone": "Z1",
+      "nominal_diameter_mm": 1.2,
+      "neighbor_tap_ids": [],
+      "qualification_status": "pending"
+    }
+  },
+  "rounds": null,
+  "defects": {},
+  "measurement_participants": {},
+  "remediation_participants": {},
+  "review_history": null,
+  "audit": [
+    {
+      "sequence": 1,
+      "at": "2026-08-27T09:12:28.387917941Z",
+      "actor_id": "qa-owner",
+      "action": "batch.created",
+      "summary": "建立模型 WT-SMOKE 的验收批次，包含 1 个测孔",
+      "previous_digest": "",
+      "digest": "d326a20310c993210517c0aec7ce1c4516021b887a12b49b2cbd66fa722d6f1b"
+    },
+    {
+      "sequence": 2,
+      "at": "2026-08-27T09:13:26.749752946Z",
+      "actor_id": "qa-owner",
+      "action": "batch.info_revised",
+      "summary": "批次信息版本 1：补充冒烟范围；摘要 e5d6e765d5f16c1b7384c71d085d530fc0c4753ac5cd6a4f95b3530cd0c45084",
+      "previous_digest": "d326a20310c993210517c0aec7ce1c4516021b887a12b49b2cbd66fa722d6f1b",
+      "digest": "d29f70e6b352c56ca7b3e4ca0fdb8c74eb793135bf177d207c776bcff186cccd"
+    }
+  ]
+}
