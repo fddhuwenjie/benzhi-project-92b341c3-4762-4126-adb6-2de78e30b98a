@@ -1,0 +1,16 @@
+{
+  "request_id": "SMOKE-INFO",
+  "fingerprint": "20b402cced25956c3827d0f5d2baf22b62765b78d97d61d055ebd1d7d433c482",
+  "response": {
+    "batch_id": "SMOKE-V40",
+    "revision": 0,
+    "state": "draft",
+    "message": "草拟批次信息已追加修订版本",
+    "draft_diff_summary": "71f11a700131aadbd53205d473f972f2fcfa511976d3d50fcbb2990dd00f39b2",
+    "threshold_digest": "53e8ff146de9d805eed32365e5c83624d6f40494e12e66f95cc17fcc39620ac0",
+    "topology_digest": "7482fea733d9a074f404fd28522c938145ec4f1b04894f6470f96534d4b98ddf",
+    "batch_info_digest": "f7f5aa36170bf4e73127ae207b4365920de64052f7c0646249962cc485184eb5"
+  },
+  "revision": 2,
+  "recorded_at": "2026-08-27T09:13:26.749752946Z"
+}
